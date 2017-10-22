@@ -14,7 +14,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JScrollPane;
 import javax.swing.JFrame;
-
+//testing editing master
 
 public class test extends JFrame{
 	public JMenuBar createMenuBar() {
