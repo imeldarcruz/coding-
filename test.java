@@ -1,3 +1,5 @@
+package YES;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -9,6 +11,7 @@ import javax.swing.ButtonGroup;
 import javax.swing.JMenuBar;
 import javax.swing.KeyStroke;
 import javax.swing.ImageIcon;
+import java.awt.Color;
 
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
@@ -19,7 +22,8 @@ import javax.swing.JFrame;
 public class test extends JFrame{
 	public JMenuBar createMenuBar() {
 		//create a menu bar
-		JMenuBar menuBar = new JMenuBar(); 
+		JMenuBar menuBar = new JMenuBar();
+		testPanel canvas = new testPanel(); 
 		
 		//Build the color Menu
 		JMenu menu = new JMenu ("Pick Colors");
@@ -51,10 +55,16 @@ public class test extends JFrame{
 	     menu.getAccessibleContext().setAccessibleDescription("This menu does nothing");
 	     menuBar.add(menu);
 	          
+	     this.add(canvas, BorderLayout.CENTER);
+	     
+	     Blue.addActionListener(new BlueListener());
+	     
 	     return menuBar; 
+	
 	}
-
-
+	
+	
+	
 	private static void createAndShowGUI() {
 		JFrame frame = new JFrame(); 
 		test demo = new test(); 
@@ -66,7 +76,20 @@ public class test extends JFrame{
 		frame.setSize(400, 400);
 		frame.setVisible(true);
 	} 
+
 	
+	class testPanel extends JPanel {
+		public void backgroundBlue() {
+			//getContentPane().setBackground(); 
+			getContentPane().setBackground(Color.BLUE);
+		}
+		
+	}
+	class BlueListener implements ActionListener {
+		public void actionPerformed (ActionEvent e) {
+			canvas.backgroundBlue();
+		}
+	}
 	
 	
 		public static void main (String[] args) {
@@ -77,10 +100,6 @@ public class test extends JFrame{
 		        });	
 		}	
 
+		
 
 }
-	
-
-	
-	
-
