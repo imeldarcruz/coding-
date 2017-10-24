@@ -1,8 +1,11 @@
-package YES;
+package poly;
 
-import javax.swing.*;
+//OFFICIAL
+
 import java.awt.*;
 import java.awt.event.*;
+import java.awt.geom.*;
+import javax.swing.*;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import javax.swing.JCheckBoxMenuItem;
@@ -11,19 +14,31 @@ import javax.swing.ButtonGroup;
 import javax.swing.JMenuBar;
 import javax.swing.KeyStroke;
 import javax.swing.ImageIcon;
-import java.awt.Color;
-
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JScrollPane;
 import javax.swing.JFrame;
-//testing editing master
 
-public class test extends JFrame{
+//OFFICIAL 
+public class MyPoly extends JFrame{
+	
+		//create two buttons 
+		JButton jbtplus = new JButton ("+1"); //increase polygon sides by 1
+		JButton jbtmin = new JButton ("-1"); // decrease polygon sides by 1
+		
+		public MyPoly() {
+			//panel to hold buttons 
+			JPanel panel = new JPanel();
+			panel.add(jbtplus); //add increase button to panel
+			panel.add(jbtmin); // add decrease button to panel 
+			
+			this.add(panel, BorderLayout.SOUTH); //place panel on bottom of page 
+		}
+		
+		
 	public JMenuBar createMenuBar() {
 		//create a menu bar
 		JMenuBar menuBar = new JMenuBar();
-		testPanel canvas = new testPanel(); 
 		
 		//Build the color Menu
 		JMenu menu = new JMenu ("Pick Colors");
@@ -55,51 +70,36 @@ public class test extends JFrame{
 	     menu.getAccessibleContext().setAccessibleDescription("This menu does nothing");
 	     menuBar.add(menu);
 	          
-	     this.add(canvas, BorderLayout.CENTER);
-	     
-	     Blue.addActionListener(new BlueListener());
-	     
 	     return menuBar; 
-	
 	}
 	
 	
-	
+
 	private static void createAndShowGUI() {
-		JFrame frame = new JFrame(); 
-		test demo = new test(); 
+		JFrame frame = new MyPoly(); 
+		MyPoly demo = new MyPoly(); 
 		frame.setJMenuBar (demo.createMenuBar());
-		//frame.setsetContentPane(demo.createContentPane());
 		frame.setTitle("Assignment");
 		frame.setLocationRelativeTo(null);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setSize(400, 400);
 		frame.setVisible(true);
 	} 
-
 	
-	class testPanel extends JPanel {
-		public void backgroundBlue() {
-			//getContentPane().setBackground(); 
-			getContentPane().setBackground(Color.BLUE);
-		}
-		
-	}
-	class BlueListener implements ActionListener {
-		public void actionPerformed (ActionEvent e) {
-			canvas.backgroundBlue();
-		}
-	}
 	
 	
 		public static void main (String[] args) {
 			 javax.swing.SwingUtilities.invokeLater(new Runnable() {
 		            public void run() {
+		            	//display GUI 
 		                createAndShowGUI();
 		            }
 		        });	
 		}	
 
-		
 
 }
+	
+
+	
+	
